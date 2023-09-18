@@ -10,15 +10,17 @@ const initialState = {
   ],
 };
 
-const notesReducer = (state=initialState, action) {
-    switch(action.type) {
-        case ADD_NOTE: 
-        console.log(action.payload)
-        return {...state};
-        case REMOVE_NOTE: console.log(action.payload)
-        return {...state};
-        default: return state;
-    }
-}
+const notesReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_NOTE:
+      console.log(action.payload);
+      return { ...state };
+    case REMOVE_NOTE:
+      console.log(action.payload);
+      return { ...state };
+    default:
+      return state;
+  }
+};
 
 export default notesReducer;
