@@ -1,10 +1,16 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeNote } from "../redux/notes/notesAction";
 
 function DisplayNotes() {
-  const notes = [
-    { id: 1, title: "Bring some text", status: "open" },
-    { id: 2, title: "Bring some text", status: "done" },
-  ];
+  const notes = useSelector((state) => state.notes);
+
+  const dispatch = useDispatch();
+
+  const removeNoteHandler = (id) => {
+    dispatch(removeNote(id));
+  };
+
   return (
     <>
       {notes.map((note) => {
@@ -24,6 +30,14 @@ function DisplayNotes() {
             >
               {note.title}
             </p>
+            <button
+              type="button"
+              onClick={() => {
+                removeNoteHandler(note.id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         );
       })}

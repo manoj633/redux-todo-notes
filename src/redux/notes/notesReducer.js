@@ -1,13 +1,7 @@
 import { ADD_NOTE, REMOVE_NOTE } from "./notesTypes";
 
 const initialState = {
-  notes: [
-    {
-      id: "cdb3c262-84e4-46dd-b2ee-168d52fe7e9c",
-      title: "A sample note",
-      status: "open",
-    },
-  ],
+  notes: [{ id: "1", title: "Sample note", status: "open" }],
 };
 
 function notesReducer(state = initialState, action) {
