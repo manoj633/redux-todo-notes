@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeNote } from "../redux/notes/notesAction";
+import { noteTaskCompleted, removeNote } from "../redux/notes/notesAction";
 
 function DisplayNotes() {
   const notes = useSelector((state) => state.notes);
@@ -9,6 +9,10 @@ function DisplayNotes() {
 
   const removeNoteHandler = (id) => {
     dispatch(removeNote(id));
+  };
+
+  const markAsComplete = (id) => {
+    dispatch(noteTaskCompleted(id));
   };
 
   return (
@@ -20,12 +24,15 @@ function DisplayNotes() {
               type="checkbox"
               name="status"
               id="status"
-              disabled={note.status === "done"}
+              disabled={note.status === "complete"}
+              onChange={() => {
+                markAsComplete(note.id);
+              }}
             />
             <p
               style={{
                 textDecoration:
-                  note.status === "done" ? "line-through" : "none",
+                  note.status === "complete" ? "line-through" : "none",
               }}
             >
               {note.title}
