@@ -3,24 +3,25 @@ import { ADD_NOTE, REMOVE_NOTE } from "./notesTypes";
 const initialState = {
   notes: [
     {
-      id: undefined,
-      title: "",
-      status: "",
+      id: "cdb3c262-84e4-46dd-b2ee-168d52fe7e9c",
+      title: "A sample note",
+      status: "open",
     },
   ],
 };
 
-const notesReducer = (state = initialState, action) => {
+function notesReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_NOTE:
-      console.log(action.payload);
-      return { ...state };
+      return { ...state, notes: [...state.notes, action.payload] };
     case REMOVE_NOTE:
-      console.log(action.payload);
-      return { ...state };
+      const updatedNotes = state.notes.filter(
+        (note) => note.id !== action.payload
+      );
+      return { ...state, notes: updatedNotes };
     default:
       return state;
   }
-};
+}
 
 export default notesReducer;
