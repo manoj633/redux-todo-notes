@@ -1,4 +1,9 @@
-import { ADD_NOTE, NOTE_TASK_COMPLETED, REMOVE_NOTE } from "./notesTypes";
+import {
+  ADD_NOTE,
+  NOTE_TASK_COMPLETED,
+  REMOVE_NOTE,
+  EDIT_NOTE,
+} from "./notesTypes";
 
 export const addNote = (note) => {
   return {
@@ -11,6 +16,13 @@ export const removeNote = (noteId) => {
   return {
     type: REMOVE_NOTE,
     payload: noteId,
+  };
+};
+
+export const editNote = (note) => {
+  return {
+    type: EDIT_NOTE,
+    payload: note,
   };
 };
 
